@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf3ff">
+  <meta name="description" content="MINDRACE — ikki jamoali ta'limiy viktorina poygasi.">
+  <title>MINDRACE — Bilim bilan olg‘a!</title>
+  <link rel="icon" href="assets/utc-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="js/questions.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="MINDRACE bosh sahifa">
+        <img class="brand-logo" src="assets/utc-logo.svg" alt="United IT Clubs">
+        <span class="brand-copy"><strong>MINDRACE</strong><small data-i18n="tagline">BILIM BILAN OLG‘A!</small></span>
+      </a>
+      <div class="toolbar">
+        <label class="language-wrap"><span class="sr-only">Til</span>
+          <select id="language" aria-label="Til">
+            <option value="uz">O‘zbekcha</option><option value="ru">Русский</option><option value="en">English</option>
+          </select>
+        </label>
+        <button class="tool-button" id="musicBtn" type="button"><span class="tool-icon">◖))</span><span data-i18n="music">Musiqa</span></button>
+        <button class="tool-button" id="soundBtn" type="button"><span class="tool-icon">ϟ</span><span data-i18n="sounds">Ovozlar</span></button>
+        <button class="tool-button icon-only" id="fullscreenBtn" type="button" aria-label="To‘liq ekran" title="To‘liq ekran">⛶</button>
+        <button class="tool-button icon-only" id="helpBtn" type="button" aria-label="Yordam" title="Yordam">?</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">Bilim poygasiga tayyormisiz?</p>
+          <h1 data-i18n="headline">O‘rganing. Bellashing. Yuting!</h1>
+          <p class="hero-subtitle" data-i18n="subheadline">Har bir javob — yangi marraga bir qadam.</p>
+        </div>
+        <div class="players-pill"><span class="people-icon">♧</span><span data-i18n="playersPill">Ikki o‘yinchi · Bitta ekran</span></div>
+      </section>
+
+      <section class="setup-layout" id="setup">
+        <div class="main-column">
+          <section class="step-section">
+            <h2 class="section-heading"><span class="step-number">1</span><span data-i18n="chooseSubject">Qaysi fan bo‘yicha bellashamiz?</span></h2>
+            <div class="subjects-grid" id="subjects"></div>
+            <div class="topic-detail" id="topicDetail" aria-live="polite">
+              <div class="topic-head"><span id="topicIcon" class="topic-big-icon">◎</span><div class="topic-title-wrap"><h3 id="topicTitle">Geografiya</h3><p id="topicStats">Savollar tanlangan fanga qarab tasodifiy chiqadi.</p></div></div>
+              <p class="topic-description" id="topicDescription">Poytaxtlar, bayroqlar va geografik bilimlar.</p>
+            </div>
+            <div class="question-filters" id="geoFilters">
+              <span class="filter-label" data-i18n="questionType">Savol turi</span>
+              <button class="filter-chip active" data-filter="mixed" data-i18n="mixed">Aralash</button>
+              <button class="filter-chip" data-filter="capitals" data-i18n="capitals">Poytaxtlar</button>
+              <button class="filter-chip" data-filter="flags" data-i18n="flags">Bayroqlar</button>
+              <button class="filter-chip" data-filter="secret" data-i18n="secretFlag">Sirli bayroq</button>
+            </div>
+          </section>
+
+          <section class="step-section modes-section">
+            <h2 class="section-heading"><span class="step-number">2</span><span data-i18n="chooseMode">Musobaqa turini tanlang</span></h2>
+            <div class="modes-grid" id="modes"></div>
+          </section>
+        </div>
+
+        <aside class="sidebar">
+          <h2 class="section-heading sidebar-heading"><span class="step-number">3</span><span data-i18n="teamsReady">Jamoalar tayyormi?</span></h2>
+          <div class="team-block blue-team">
+            <div class="team-label-row"><span class="team-number">1</span><label for="team1" data-i18n="team1">1-o‘yinchi ismi</label></div>
+            <input id="team1" maxlength="28" value="1-o‘yinchi" autocomplete="off">
+            <div class="car-card"><img id="carImg1" src="assets/cars/cobalt.svg" alt="Cobalt avtomobili"><div class="car-info"><span class="car-label" data-i18n="car1">1-o‘yinchi mashinasi</span><strong id="carName1">Cobalt</strong><button type="button" class="car-change" id="changeCar1" data-i18n="changeCar">Mashinanı almashtirish</button></div><button class="refresh-car" id="nextCar1" type="button" aria-label="Mashina almashtirish">⟳</button></div>
+          </div>
+          <div class="team-block orange-team">
+            <div class="team-label-row"><span class="team-number">2</span><label for="team2" data-i18n="team2">2-o‘yinchi ismi</label></div>
+            <input id="team2" maxlength="28" value="2-o‘yinchi" autocomplete="off">
+            <div class="car-card"><img id="carImg2" src="assets/cars/onix.svg" alt="Onix avtomobili"><div class="car-info"><span class="car-label" data-i18n="car2">2-o‘yinchi mashinasi</span><strong id="carName2">Onix</strong><button type="button" class="car-change" id="changeCar2" data-i18n="changeCar">Mashinanı almashtirish</button></div><button class="refresh-car" id="nextCar2" type="button" aria-label="Mashina almashtirish">⟳</button></div>
+          </div>
+          <p class="sidebar-note" data-i18n="carRules">Barcha mashinalar uchun bir xil poyga qoidalari.</p>
+          <div class="sidebar-divider"></div>
+          <div class="setting-group"><h3 data-i18n="difficulty">Qiyinlik darajasi</h3><div class="segmented" id="difficulty"><button data-value="easy" data-i18n="easy">Boshlang‘ich</button><button data-value="medium" data-i18n="medium">O‘rta</button><button class="active" data-value="hard" data-i18n="hard">Murakkab</button></div></div>
+          <div class="sidebar-divider"></div>
+          <div class="setting-group"><h3 data-i18n="roundDuration">Raund davomiyligi</h3><div class="segmented" id="duration"><button data-value="45">45 s</button><button class="active" data-value="60">60 s</button><button data-value="90">90 s</button></div></div>
+          <div class="selected-mode-summary" id="selectedModeSummary"><span class="summary-flag">⚑</span><div><strong id="summaryTitle">Bilim poygasi</strong><span id="summaryDescription">Har to‘g‘ri javob — 10 metr</span></div></div>
+          <button class="primary-button start-button" id="startBtn"><span>▷</span><span data-i18n="start">Musobaqani boshlash</span></button>
+          <p class="keyboard-note">▦ <span data-i18n="keyboard">A S D F / J K L ;</span><br><span data-i18n="keyboardHint">Javoblarni bosing yoki klaviaturadan foydalaning.</span></p>
+        </aside>
+      </section>
+      <footer class="footer"><span>MINDRACE / 2026</span><button id="sourcesBtn" type="button" class="text-link" data-i18n="questionSources">Savollar manbalari</button><span class="footer-right">♢ <span id="footerStats">Fanlar · Mahalliy savollar banki</span></span></footer>
+    </main>
+  </div>
+
+  <section id="gameScreen" class="game-screen hidden" aria-live="polite">
+    <div class="game-topbar"><a class="game-brand" href="#top">MINDRACE</a><div class="game-badges"><span class="pill" id="roundBadge">Raund 1 / 3</span><span class="pill"><span data-i18n="timeLeft">Qolgan vaqt</span>: <b id="timerDisplay">60</b>s</span></div><button class="secondary-button" id="exitBtn" data-i18n="exit">Chiqish</button></div>
+    <div class="race-board" id="raceBoard"></div>
+    <div class="question-panel"><div class="question-meta"><span id="questionSubject">Geografiya</span><span id="questionCount">Savol 1</span></div><h2 id="questionText" class="question-text">Savol shu yerda chiqadi.</h2><div id="answers" class="answers-grid"></div><div class="question-footer"><p id="feedback" role="status">Javob variantini tanlang.</p><button class="secondary-button" id="skipBtn" data-i18n="skip">Savolni o‘tkazish</button></div></div>
+  </section>
+
+  <section id="resultScreen" class="result-screen hidden" aria-live="polite"><div class="result-card"><div class="result-trophy">🏆</div><p class="eyebrow">MINDRACE / FINAL</p><h2 id="resultTitle">G‘olib aniqlanmoqda</h2><div class="result-scores" id="resultScores"></div><p id="resultCaption"></p><div class="result-actions"><button class="primary-button" id="playAgainBtn" data-i18n="playAgain">Qayta o‘ynash</button><button class="secondary-button" id="backBtn" data-i18n="settings">Sozlamalarga qaytish</button></div></div></section>
+
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><button class="modal-close" id="closeModal" aria-label="Yopish">×</button><h2 id="modalTitle">MINDRACE</h2><div id="modalBody"></div><button class="primary-button modal-ok" id="modalOk" data-i18n="understood">Tushunarli</button></div></div>
+</body>
+</html>
